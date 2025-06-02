@@ -1,0 +1,193 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 33% 16%;
+    --foreground: 240 10% 98%;
+
+    --card: 240 33% 12%;
+    --card-foreground: 240 10% 98%;
+
+    --popover: 240 33% 12%;
+    --popover-foreground: 240 10% 98%;
+
+    --primary: 250 59% 62%;
+    --primary-foreground: 240 10% 98%;
+
+    --secondary: 240 20% 30%;
+    --secondary-foreground: 240 10% 98%;
+
+    --muted: 240 20% 30%;
+    --muted-foreground: 240 10% 70%;
+
+    --accent: 240 20% 20%;
+    --accent-foreground: 240 10% 98%;
+
+    --destructive: 0 74% 57%;
+    --destructive-foreground: 240 10% 98%;
+
+    --border: 240 20% 20%;
+    --input: 240 20% 20%;
+    --ring: 250 59% 62%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 240 33% 12%;
+    --sidebar-foreground: 240 10% 98%;
+    --sidebar-primary: 250 59% 62%;
+    --sidebar-primary-foreground: 240 10% 98%;
+    --sidebar-accent: 240 20% 20%;
+    --sidebar-accent-foreground: 240 10% 98%;
+    --sidebar-border: 240 20% 20%;
+    --sidebar-ring: 250 59% 62%;
+  }
+
+  .light {
+    --background: 240 10% 95%;
+    --foreground: 240 33% 16%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 33% 16%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 33% 16%;
+
+    --primary: 250 59% 62%;
+    --primary-foreground: 240 10% 98%;
+
+    --secondary: 240 10% 90%;
+    --secondary-foreground: 240 33% 16%;
+
+    --muted: 240 10% 90%;
+    --muted-foreground: 240 5% 50%;
+
+    --accent: 240 10% 90%;
+    --accent-foreground: 240 33% 16%;
+
+    --destructive: 0 74% 57%;
+    --destructive-foreground: 240 10% 98%;
+
+    --border: 240 10% 80%;
+    --input: 240 10% 80%;
+    --ring: 250 59% 62%;
+
+    --sidebar-background: 240 10% 98%;
+    --sidebar-foreground: 240 33% 16%;
+    --sidebar-primary: 250 59% 62%;
+    --sidebar-primary-foreground: 240 10% 98%;
+    --sidebar-accent: 240 10% 90%;
+    --sidebar-accent-foreground: 240 33% 16%;
+    --sidebar-border: 240 10% 80%;
+    --sidebar-ring: 250 59% 62%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-accent/30;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/70;
+  }
+
+  /* Self-destructing message animation */
+  .self-destruct-countdown {
+    animation: countdown linear forwards;
+  }
+
+  @keyframes countdown {
+    from { width: 100%; }
+    to { width: 0%; }
+  }
+
+  /* Ripple effect for video call */
+  .ripple {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    animation: ripple 1.5s linear infinite;
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(0.8);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+}
+
+/* Custom theme components */
+@layer components {
+  .whisper-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .message-bubble {
+    @apply rounded-lg p-3 max-w-[85%] break-words;
+  }
+  
+  .message-bubble-sent {
+    @apply bg-whisper-500 text-white ml-auto;
+  }
+  
+  .message-bubble-received {
+    @apply bg-secondary text-white mr-auto;
+  }
+
+  .app-button {
+    @apply rounded-md px-4 py-2 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background;
+  }
+  
+  .app-button-primary {
+    @apply app-button bg-whisper-500 text-white hover:bg-whisper-600 focus:ring-whisper-500;
+  }
+  
+  .app-button-secondary {
+    @apply app-button bg-secondary text-white hover:bg-whisper-700 focus:ring-secondary;
+  }
+  
+  .app-button-danger {
+    @apply app-button bg-danger text-white hover:bg-danger/90 focus:ring-danger;
+  }
+  
+  .nav-link {
+    @apply px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-whisper-700;
+  }
+  
+  .nav-link-active {
+    @apply bg-whisper-700;
+  }
+  
+  .control-panel-button {
+    @apply flex items-center justify-center p-3 rounded-md bg-secondary hover:bg-secondary/80 text-white transition-colors;
+  }
+}

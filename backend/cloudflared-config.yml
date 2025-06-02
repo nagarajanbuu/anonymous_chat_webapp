@@ -1,0 +1,23 @@
+
+# This is the configuration file for cloudflared
+# Create a tunnel first using the Cloudflare Zero Trust dashboard or CLI
+# and replace 'your-tunnel-id' with your actual tunnel ID
+
+tunnel: your-tunnel-id
+credentials-file: /path/to/your/credentials.json
+
+# Ingress rules control which domains are routed to your service
+ingress:
+  - hostname: your-custom-subdomain.example.com
+    service: http://localhost:3001
+    originRequest:
+      noTLSVerify: false
+      connectTimeout: 30s
+      originServerName: your-custom-subdomain.example.com
+  - service: http_status:404
+
+# TLS configuration
+tls-config:
+  disableChunkedEncoding: false
+  noTLSVerify: false
+  originServerName: your-custom-subdomain.example.com
